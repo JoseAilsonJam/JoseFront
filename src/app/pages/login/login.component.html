@@ -1,0 +1,23 @@
+<div class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2>Login</h2>
+      <mat-form-field appearance="outline">
+        <mat-label>Usuário</mat-label>
+        <input matInput formControlName="username" placeholder="Digite seu usuário" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Digite sua senha" required />
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" class="login-button">
+        Entrar
+      </button>
+  
+      <div class="error-message" *ngIf="loginError">
+        Usuário ou senha inválidos.
+      </div>
+    </form>
+  </div>
+  

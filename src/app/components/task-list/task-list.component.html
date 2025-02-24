@@ -1,1 +1,31 @@
-<p>task-list works!</p>
+<div class="task-container">
+    <div class="task-actions">
+      <label for="searchId">Procurar pelo ID:</label>
+      <input type="text" id="searchId" [(ngModel)]="searchId" placeholder="Digite o ID GUID" />
+      <button (click)="searchTask()">Buscar</button>
+      <button (click)="getAllTasks()">Listar Todas</button>
+    </div>
+  
+    <table *ngIf="tasks.length">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.id }}</td>
+          <td>{{ task.title }}</td>
+          <td>
+            <button (click)="editTask(task.id)">Editar</button>
+            <button (click)="deleteTask(task.id)">Deletar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="!tasks.length">Nenhuma tarefa encontrada.</p>
+  </div>
+  

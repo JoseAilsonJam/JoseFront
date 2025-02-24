@@ -5,12 +5,16 @@ import { Task } from '../models/task.model';
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
-  private apiUrl = 'http://localhost:44335/api/tasks';
+  private apiUrl = 'https://localhost:44335/api/Task';
 
   constructor(private http: HttpClient) {}
 
-  getTasks(): Observable<Task[]> {
+  getAllTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.apiUrl);
+  }
+
+  getTask(id: string): Observable<Task> {
+    return this.http.get<Task>(`${this.apiUrl}/${id}`);
   }
 
   createTask(task: Task): Observable<Task> {
@@ -21,7 +25,7 @@ export class TaskService {
     return this.http.put<Task>(`${this.apiUrl}/${task.id}`, task);
   }
 
-  deleteTask(id: number): Observable<void> {
+  deleteTask(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

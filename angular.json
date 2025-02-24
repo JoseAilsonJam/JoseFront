@@ -69,6 +69,12 @@
               "buildTarget": "JoseFront:build:development"
             }
           },
+          "options": {
+            "ssl": true,
+            "sslKey": "server.key",
+            "sslCert": "server.crt",
+            "port": 4200
+          },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
